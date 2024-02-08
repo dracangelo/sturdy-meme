@@ -44,7 +44,10 @@
 
         function animate() {
             requestAnimationFrame(animate);
-            particles.rotation.y += 0.01;
+            particles.position.y -= 1; // Move particles downwards
+            if (particles.position.y < -1000) {
+                particles.position.y = 1000; // Reset particles' y position when they fall below a certain threshold
+            }
             renderer.render(scene, camera);
         }
 
